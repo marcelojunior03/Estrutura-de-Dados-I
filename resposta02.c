@@ -1,9 +1,44 @@
-//Nome: Marcelo Heiffig Júnior - Prontuário: CV3095126
+//Nome: Marcelo Heiffig JÃºnior - ProntuÃ¡rio: CV3095126
 
 #include <stdio.h>
-#include <locale.h>
 
 void main(){
-    setlocale(LC_ALL, "Portuguese");
+    int caixaSuperRapido[10], caixaRapido[10], caixaNormal[10], produtos, continuar;
 
+    do{
+        printf("\nQuantos produtos tem dentro do carrinho?: ");
+        scanf("%i", &produtos);
+
+        if(produtos <= 0){
+            printf("ERRO! O valor digitado Ã© invalido!");
+        }
+        else if(produtos <= 5){
+            caixaSuperRapido[i] = produtos;
+        }
+        else if(produtos > 5 && produtos <= 20){
+            caixaRapido[i] = produtos;
+        }
+        else{
+            caixaNormal[i] = produtos;
+        }
+
+        printf("Deseja continuar? (1 = sim; 0 = nao)\n");
+        scanf("%i", &continuar);
+    }
+    while(continuar == 1);
+
+    printf("\nCaixa super rapido:\n")
+    for(int i = 0; i < 10; i++){
+        printf(caixaSuperRapido[i]"\n");
+    }
+
+    printf("\nCaixa rapido:\n")
+    for(int i = 0; i < 10; i++){
+        printf(caixaRapido[i]"\n");
+    }
+
+    printf("\nCaixa normal:\n")
+    for(int i = 0; i < 10; i++){
+        printf(caixaNormal[i]"\n");
+    }
 }
