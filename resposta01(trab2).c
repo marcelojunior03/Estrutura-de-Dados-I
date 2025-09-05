@@ -5,8 +5,8 @@
 #define COL 4
 
 void main(){
-    int Matriz[LIN][COL];
     int lin, col, linNula, colNula;
+    int Matriz[LIN][COL];
 
     for(lin = 0; lin < LIN; lin++){
         for(col = 0; col < COL; col++){
@@ -19,32 +19,12 @@ void main(){
     colNula = 0;
 
     for(lin = 0; lin < LIN; lin++){
-        for(col = 0; col < COL; col++){
-            if(Matriz[0][col]){
-                linNula++;
-            }
-            else if(Matriz[1][col]){
-                linNula++;
-            }
-            else if(Matriz[2][col]){
-                linNula++;
-            }
-            else if(Matriz[3][col]){
-                linNula++;
-            }
+        if(Matriz[lin][0] == 0 && Matriz[lin][1] == 0 && Matriz[lin][2] == 0 && Matriz[lin][3] == 0){
+            linNula++;
+        }
 
-            if(Matriz[lin][0]){
-                colNula++;
-            }
-            else if(Matriz[lin][1]){
-                colNula++;
-            }
-            else if(Matriz[lin][2]){
-                colNula++;
-            }
-            else if(Matriz[lin][3]){
-                colNula++;
-            }
+        if(Matriz[0][lin] == 0 && Matriz[1][lin] == 0 && Matriz[2][lin] == 0 && Matriz[3][lin] == 0){
+            colNula++;
         }
     }
 
