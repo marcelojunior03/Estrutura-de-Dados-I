@@ -1,4 +1,4 @@
-//Nome: Marcelo Heiffig Júnior - RA: CV3095126
+//Nome: Marcelo Heiffig JÃºnior - RA: CV3095126
 
 #include <stdio.h>
 #define LIN 3
@@ -19,14 +19,14 @@ void main(){
     lin1 = lin2 = lin3 = col1 = col2 = col3 = diagPrin = diagSec = 0;
 
     for(lin = 0; lin < LIN; lin++){
-        for(col = 0; col < COL; col++){
-            lin1 += Matriz[0][col];
-            lin2 += Matriz[1][col];
-            lin3 += Matriz[2][col];
-            col1 += Matriz[lin][0];
-            col2 += Matriz[lin][1];
-            col3 += Matriz[lin][2];
+        lin1 += Matriz[0][lin];
+        lin2 += Matriz[1][lin];
+        lin3 += Matriz[2][lin];
+        col1 += Matriz[lin][0];
+        col2 += Matriz[lin][1];
+        col3 += Matriz[lin][2];
 
+        for(col = 0; col < COL; col++){
             if(lin == col){
                 diagPrin += Matriz[lin][col];
             }
@@ -37,7 +37,7 @@ void main(){
     diagSec += Matriz[1][1];
     diagSec += Matriz[2][0];
 
-    if(lin1 == lin2 == lin3 == col1 == col2 == col3 == diagPrin == diagSec){
+    if(lin1 == lin2 && lin2 == lin3 && lin3 == col1 && col1 == col2 && col2 == col3 && col3 == diagPrin && diagPrin == diagSec){
         printf("A matriz eh um quadrado magico!");
     }
     else{
