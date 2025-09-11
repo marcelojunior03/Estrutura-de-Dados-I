@@ -21,24 +21,28 @@ void main(){
         gets(posicoes[indice]);
 
         if(strcmp(posicoes[indice], 'goleiro') == 0){
-            lista1[indice1] = alunos[indice];
+            strcpy(lista1[indice1], alunos[indice]);
             indice1++;
         }
         else if(strcmp(posicoes[indice], 'lateral') == 0){
-            lista2[indice2] = alunos[indice];
+            strcpy(lista2[indice2], alunos[indice]);
             indice2++;
         }
         else if(strcmp(posicoes[indice], 'zagueiro') == 0){
-            lista3[indice3] = alunos[indice];
+            strcpy(lista3[indice3], alunos[indice]);
             indice3++;
         }
         else if(strcmp(posicoes[indice], 'meio campo') == 0){
-            lista4[indice4] = alunos[indice];
+            strcpy(lista4[indice4], alunos[indice]);
             indice4++;
         }
         else if(strcmp(posicoes[indice], 'atacante') == 0){
-            lista5[indice5] = alunos[indice];
+            strcpy(lista5[indice5], alunos[indice]);
             indice5++;
+        }
+        else{
+            printf("ERRO! Posição invalida!");
+            indice--;
         }
 
         printf("\nDeseja continuar?(S/N) ");
