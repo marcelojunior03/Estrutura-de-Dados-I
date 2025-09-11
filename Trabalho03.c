@@ -20,23 +20,23 @@ void main(){
         printf("Digite a posicao do aluno: ");
         gets(posicoes[indice]);
 
-        if(strcmp(posicoes[indice], 'goleiro') == 0){
+        if(strcasecmp(posicoes[indice], 'goleiro') == 0){
             strcpy(lista1[indice1], alunos[indice]);
             indice1++;
         }
-        else if(strcmp(posicoes[indice], 'lateral') == 0){
+        else if(strcasecmp(posicoes[indice], 'lateral') == 0){
             strcpy(lista2[indice2], alunos[indice]);
             indice2++;
         }
-        else if(strcmp(posicoes[indice], 'zagueiro') == 0){
+        else if(strcasecmp(posicoes[indice], 'zagueiro') == 0){
             strcpy(lista3[indice3], alunos[indice]);
             indice3++;
         }
-        else if(strcmp(posicoes[indice], 'meio campo') == 0){
+        else if(strcasecmp(posicoes[indice], 'meio campo') == 0){
             strcpy(lista4[indice4], alunos[indice]);
             indice4++;
         }
-        else if(strcmp(posicoes[indice], 'atacante') == 0){
+        else if(strcasecmp(posicoes[indice], 'atacante') == 0){
             strcpy(lista5[indice5], alunos[indice]);
             indice5++;
         }
