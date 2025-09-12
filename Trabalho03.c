@@ -3,12 +3,14 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include <stdbool.h>
 
 void main(){
     char alunos[100][50], lista1[100][50], lista2[100][50], lista3[100][50], lista4[100][50], lista5[100][50];
     char posicoes[100][20];
     int indice, indice1, indice2, indice3, indice4, indice5;
     char continuar;
+    bool deuErro = false;
 
     indice1 = indice2 = indice3 = indice4 = indice5 = 0;
     indice = 0;
@@ -42,39 +44,42 @@ void main(){
         }
         else{
             printf("ERRO! Posicao invalida!");
-            indice--;
+            deuErro = true;
         }
 
         printf("\nDeseja continuar?(S/N) ");
         continuar = getchar();
         continuar = toupper(continuar);
 
-        indice++;
+        if(deuErro == false){
+            indice++;
+        }
+
         fflush(stdin);
 
     }while(continuar == 'S');
 
-    printf("Lista goleiros:\n");
+    printf("\nLista goleiros:\n");
     for(int i = 0; i < indice1; i++){
         printf("%s\n", lista1[i]);
     }
 
-    printf("Lista laterais:\n");
+    printf("\nLista laterais:\n");
     for(int i = 0; i < indice2; i++){
         printf("%s\n", lista2[i]);
     }
 
-    printf("Lista zagueiros:\n");
+    printf("\nLista zagueiros:\n");
     for(int i = 0; i < indice3; i++){
         printf("%s\n", lista3[i]);
     }
 
-    printf("Lista meio campo:\n");
+    printf("\nLista meio campo:\n");
     for(int i = 0; i < indice4; i++){
         printf("%s\n", lista4[i]);
     }
 
-    printf("Lista atacantes:\n");
+    printf("\nLista atacantes:\n");
     for(int i = 0; i < indice5; i++){
         printf("%s\n", lista5[i]);
     }
