@@ -20,28 +20,28 @@ void main(){
         printf("Digite a posicao do aluno: ");
         gets(posicoes[indice]);
 
-        if(strcasecmp(posicoes[indice], 'goleiro') == 0){
+        if(strcasecmp(posicoes[indice], "Goleiro") == 0){
             strcpy(lista1[indice1], alunos[indice]);
             indice1++;
         }
-        else if(strcasecmp(posicoes[indice], 'lateral') == 0){
+        else if(strcasecmp(posicoes[indice], "Lateral") == 0){
             strcpy(lista2[indice2], alunos[indice]);
             indice2++;
         }
-        else if(strcasecmp(posicoes[indice], 'zagueiro') == 0){
+        else if(strcasecmp(posicoes[indice], "Zagueiro") == 0){
             strcpy(lista3[indice3], alunos[indice]);
             indice3++;
         }
-        else if(strcasecmp(posicoes[indice], 'meio campo') == 0){
+        else if(strcasecmp(posicoes[indice], "Meio campo") == 0){
             strcpy(lista4[indice4], alunos[indice]);
             indice4++;
         }
-        else if(strcasecmp(posicoes[indice], 'atacante') == 0){
+        else if(strcasecmp(posicoes[indice], "Atacante") == 0){
             strcpy(lista5[indice5], alunos[indice]);
             indice5++;
         }
         else{
-            printf("ERRO! Posição invalida!");
+            printf("ERRO! Posicao invalida!");
             indice--;
         }
 
@@ -56,26 +56,26 @@ void main(){
 
     printf("Lista goleiros:\n");
     for(int i = 0; i <= indice1; i++){
-        printf("\n%s", lista1[i]);
+        printf("%s\n", lista1[i]);
     }
 
     printf("Lista laterais:\n");
     for(int i = 0; i <= indice2; i++){
-        printf("\n%s", lista2[i]);
+        printf("%s\n", lista2[i]);
     }
 
     printf("Lista zagueiros:\n");
     for(int i = 0; i <= indice3; i++){
-        printf("\n%s", lista3[i]);
+        printf("%s\n", lista3[i]);
     }
 
     printf("Lista meio campo:\n");
     for(int i = 0; i <= indice4; i++){
-        printf("\n%s", lista4[i]);
+        printf("%s\n", lista4[i]);
     }
 
     printf("Lista atacantes:\n");
     for(int i = 0; i <= indice5; i++){
-        printf("\n%s", lista5[i]);
+        printf("%s\n", lista5[i]);
     }
 }
