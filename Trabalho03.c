@@ -55,27 +55,27 @@ void main(){
     }while(continuar == 'S');
 
     printf("Lista goleiros:\n");
-    for(int i = 0; i <= indice1; i++){
+    for(int i = 0; i < indice1; i++){
         printf("%s\n", lista1[i]);
     }
 
     printf("Lista laterais:\n");
-    for(int i = 0; i <= indice2; i++){
+    for(int i = 0; i < indice2; i++){
         printf("%s\n", lista2[i]);
     }
 
     printf("Lista zagueiros:\n");
-    for(int i = 0; i <= indice3; i++){
+    for(int i = 0; i < indice3; i++){
         printf("%s\n", lista3[i]);
     }
 
     printf("Lista meio campo:\n");
-    for(int i = 0; i <= indice4; i++){
+    for(int i = 0; i < indice4; i++){
         printf("%s\n", lista4[i]);
     }
 
     printf("Lista atacantes:\n");
-    for(int i = 0; i <= indice5; i++){
+    for(int i = 0; i < indice5; i++){
         printf("%s\n", lista5[i]);
     }
 }
