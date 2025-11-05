@@ -1,0 +1,93 @@
+//Nome: Marcelo Heiffig Júnior - RA: CV3095126
+
+#include <stdio.h>
+#include <stdbool.h>
+
+#define MAXVEN 20
+#define MAXCLI 1000
+#define MAXATE 20000
+
+struct data{
+    short int dia, mes, ano;
+};
+typedef struct data Data;
+
+struct atendimento{
+    char nomeVendedor[50];
+    char nomeCliente[50];
+    Data umaData;
+    float nota;
+};
+typedef struct atendimento Atendimento;
+
+void cadastrarClientes(char clientes[50][MAXCLI], int *quantos){
+    char continua;
+
+    do
+    {
+        fflush(stdin);
+        printf("\nDigite o cliente %i: ", *quantos);
+        gets(clientes[*quantos]);
+        *quantos = *quantos + 1;
+        fflush(stdin);
+        printf("\nCadastra mais um? (S/N) ");
+        continua = getchar();
+    }
+    while(toupper(continua) == 'S' && *quantos < MAXCLI);
+}
+
+bool jaExiste(char nome[50], char vendedores[50][MAXVEN], int quantos){
+    bool achou = false;
+
+    for(int i = 0; i < quantos; i++)
+    {
+        if(strcmp(nome, vendedores[i]) == 0)
+        {
+            achou = true;
+        }
+    }
+    return achou;
+}
+
+void cadastrarVendedores(char vendedores[50][MAXVEN], int *quantos){
+    char nome[50];
+    char continua;
+
+    do
+    {
+        do
+        {
+          fflush(stdin);
+          printf("\nDigite o nome: ");
+          gets(nome);
+        }
+        while(jaExiste(nome, vendedores, *quantos));
+    }
+    while(toupper(continua) == 'S' && *quantos < MAXVEN);
+}
+
+
+void main(){
+    char clientes[50][MAXCLI];
+    int quantosClientes = 0;
+    char vendedores[50][MAXVEN];
+    int quantosVendedores = 0;
+    Atendimento atendimentos[MAXATE];
+    int quantosAtendimentos = 0;
+
+    ///cadastramento de clientes
+    cadastrarClientes(clientes, &quantosClientes);
+
+    cadastrarVendedores(vendedores, &quantosVendedores);
+
+    cadastrarAtendimentos(atendimentos, &quantosAtendimentos,
+                          clientes, quantosClientes,
+                          vendedores, quantosVendedores);
+
+    imprimirRelatorio(atendimentos, quantosAtendimentos);
+}
+
+/*Em ambos os exercícios, cada das uma das funcionalidades principais deverá ser acessada
+a partir de um menu de opções. Obrigatoriamente deve-se propor a implementação do
+programa com auxílio de funções e não é permitida a utilização de variáveis globais (e
+nem break e continue para sair de loops).*/
