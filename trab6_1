@@ -2,10 +2,11 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 
 #define MAXVEN 20
-#define MAXCLI 1000
-#define MAXATE 20000
+#define MAXCLI 10
+#define MAXATE 20
 
 struct data{
     short int dia, mes, ano;
@@ -20,57 +21,116 @@ struct atendimento{
 };
 typedef struct atendimento Atendimento;
 
-void cadastrarClientes(char clientes[50][MAXCLI], int *quantos){
+void cadastrarClientes(char clientes[MAXCLI][50], int *quantos){
     char continua;
 
     do
     {
         fflush(stdin);
-        printf("\nDigite o cliente %i: ", *quantos);
+        printf("\nDigite o nome do cliente %i: ", *quantos+1);
         gets(clientes[*quantos]);
         *quantos = *quantos + 1;
+
         fflush(stdin);
-        printf("\nCadastra mais um? (S/N) ");
+        printf("\nCadastrar mais um cliente? (S/N) ");
         continua = getchar();
     }
     while(toupper(continua) == 'S' && *quantos < MAXCLI);
 }
 
-bool jaExiste(char nome[50], char vendedores[50][MAXVEN], int quantos){
+bool jaExisteVen(char nome[50], char vendedores[MAXVEN][50], int quantos){
     bool achou = false;
 
-    for(int i = 0; i < quantos; i++)
-    {
-        if(strcmp(nome, vendedores[i]) == 0)
-        {
+    for(int i = 0; i < quantos; i++){
+        if(strcmp(nome, vendedores[i]) == 0){
             achou = true;
         }
     }
     return achou;
 }
 
-void cadastrarVendedores(char vendedores[50][MAXVEN], int *quantos){
+bool jaExisteCli(char nome[50], char clientes[MAXCLI][50], int quantos){
+    bool achou = false;
+
+    for(int i = 0; i < quantos; i++){
+        if(strcmp(nome, vendedores[i]) == 0){
+            achou = true;
+        }
+    }
+    return achou;
+}
+
+void cadastrarVendedores(char vendedores[MAXVEN][50], int *quantos){
     char nome[50];
     char continua;
 
-    do
-    {
-        do
-        {
-          fflush(stdin);
-          printf("\nDigite o nome: ");
-          gets(nome);
+    do{
+        do{
+            fflush(stdin);
+            printf("\nDigite o nome do vendedor: ");
+            gets(nome);
+
+            if(jaExisteVen(nome, vendedores, *quantos)){
+                printf("\nO vendedor ja esta cadastrado!");
+            }
         }
-        while(jaExiste(nome, vendedores, *quantos));
+        while(jaExisteVen(nome, vendedores, *quantos));
+
+        strcpy(vendedores[*quantos], nome);
+        *quantos = *quantos + 1;
+
+        fflush(stdin);
+        printf("\nCadastrar mais um vendedor? (S/N) ");
+        continua = getchar();
     }
     while(toupper(continua) == 'S' && *quantos < MAXVEN);
 }
 
+void cadastrarAtendimentos(Atendimento atendimentos[MAXATE], int *quantos, char clientes[MAXCLI][50], int quantosClientes, char vendedores[MAXVEN][50], int quantosVendedores){
+    char nome[50];
+    char continua;
+
+    do{
+        do{
+            fflush(stdin);
+            printf("\nDigite o nome do vendedor: ");
+            gets(nome);
+
+            if(jaExisteVen(nome, vendedores, *quantos) == false){
+                printf("\nO vendedor nao existe!");
+            }
+        }
+        while(jaExisteVen(nome, vendedores, *quantos) == false);
+
+        strcpy(nome, atendimentos[*quantos].nomeVendedor);
+
+        do{
+            fflush(stdin);
+            printf("\nDigite o nome do cliente: ");
+            gets(nome);
+
+            if(jaExisteCli(nome, clientes, *quantos) == false){
+                printf("\nO cliente nao existe!");
+            }
+        }
+        while(jaExisteCli(nome, clientes, *quantos) == false);
+
+        strcpy(nome, atendimentos[*quantos].nomeCliente);
+
+
+
+        *quantos = *quantos + 1;
+        fflush(stdin);
+        printf("\nCadastrar mais um atendimento? (S/N) ");
+        continua = getchar();
+    }
+    while(toupper(continua) == 'S' && *quantos < MAXATE);
+}
 
 void main(){
-    char clientes[50][MAXCLI];
+    char clientes[MAXCLI][50];
     int quantosClientes = 0;
-    char vendedores[50][MAXVEN];
+    char vendedores[MAXVEN][50];
     int quantosVendedores = 0;
     Atendimento atendimentos[MAXATE];
     int quantosAtendimentos = 0;
@@ -80,9 +140,7 @@ void main(){
 
     cadastrarVendedores(vendedores, &quantosVendedores);
 
-    cadastrarAtendimentos(atendimentos, &quantosAtendimentos,
-                          clientes, quantosClientes,
-                          vendedores, quantosVendedores);
+    cadastrarAtendimentos(atendimentos, &quantosAtendimentos, clientes, quantosClientes, vendedores, quantosVendedores);
 
     imprimirRelatorio(atendimentos, quantosAtendimentos);
 }
