@@ -7,8 +7,8 @@
 #include <stdlib.h>
 
 #define MAXVEN 20
-#define MAXCLI 10
-#define MAXATE 20
+#define MAXCLI 1000
+#define MAXATE 20000
 
 struct data{
     short int dia, mes;
