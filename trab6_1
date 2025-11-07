@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
 
 #define MAXVEN 20
 #define MAXCLI 10
@@ -153,7 +155,22 @@ void cadastrarAtendimentos(Atendimento atendimentos[MAXATE], int *quantos, char 
 }
 
 void imprimirRelatorio(Atendimento atendimentos[MAXATE], int quantosAtendimentos){
+    system("cls");
+    char continua;
 
+    do{
+        for(int i = 0; i < quantosAtendimentos; i++){
+            printf("\n\nVendedor(a) %c:", atendimentos[i].nomeVendedor);
+            printf("\n\nCliente: %c", atendimentos[i].nomeCliente);
+            printf("\nData: %i/%i/%i", atendimentos[i].umaData.dia, atendimentos[i].umaData.mes, atendimentos[i].umaData.ano);
+            printf("\nNota: %i", atendimentos[i].nota);
+        }
+
+        fflush(stdin);
+        printf("\nVoltar ao menu? (S/N) ");
+        continua = getchar();
+    }
+    while(toupper(continua) != 'S');
 }
 
 void main(){
