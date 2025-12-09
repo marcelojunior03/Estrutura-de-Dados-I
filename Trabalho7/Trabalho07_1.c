@@ -30,7 +30,10 @@ void upts(char *frase){
 }
 
 void main(){
-    char frase[100] = {"Oi Tudo bem?"};
+    char frase[100];
+
+    printf("\nDigite uma frase: ");
+    gets(frase);
 
     upts(frase);
 }
