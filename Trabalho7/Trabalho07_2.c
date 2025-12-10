@@ -2,7 +2,6 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 
 void strcatcat(char *s1, char *s2, char *s3){
     char *frase = s1;
@@ -44,3 +43,4 @@ void main(){
 
     strcatcat(s1, s2, s3);
 }
+
